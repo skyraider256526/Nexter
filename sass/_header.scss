@@ -1,7 +1,13 @@
 .header {
   background-color: $color-grey-dark-2;
   grid-column: full-start / col-end 6;
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: full-start / full-end;
+  }
   padding: 8rem;
+  @media only screen and (max-width: $bp-small) {
+    padding: 4rem;
+  }
   // padding-top: 4rem;
 
   background-image: linear-gradient(
@@ -12,7 +18,8 @@
   background-size: cover;
 
   display: grid;
-  grid-template-rows: 1fr min-content 6rem 1fr;
+  grid-template-columns: minmax(min-content, max-content);
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
   // grid-template-rows: min-content 1fr repeat(3, min-content) 1fr min-content;
   // grid-template-columns: max-content;
   //since the grig container doesnt occupy all the space it is not centerd, so we use justify-content wich works only if there is space available.
@@ -48,9 +55,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
-    grid-column: 3rem;
+    align-items: center;
+    column-gap: 3rem;
     img {
-      height: 2.5rem;
+      max-height: 2.5rem;
+      max-width: 100%;
       // background-color: rgba(black, 0.5);
       filter: brightness(70%);
     }
